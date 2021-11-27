@@ -1,0 +1,81 @@
+###Database related commands:
+
+show dbs                                                     # for showing list of databases in mongo
+
+use <"database name">                                        # for creating new database or switching to databases
+
+db                                                           # for viewing the current database
+
+db.dropDatabase()                                            # for dropping/deleting database
+
+####Collections related commands:
+
+db.createCollection('name of the collection')                # for creating new collection
+
+show Collectons                                              # for showing current collection you're working on
+
+db.collection-name.drop()                                    # for dropping the current collection
+
+
+###Rows related commands
+
+db.<collection-name>.insert({                                # for inserting single row into a collection 
+    'name':'srting',                                               1. inside of insert, we create BSON format.
+    'lang':'string',
+    'date-of-joining': 'number'
+})
+
+
+db.<collection-name>.insertMany([{                           # for inserting multiple rows of arrays with ref. to objects.
+    'name':'srting', 
+    'lang':'string',
+    'date-of-joining': 'number'
+
+},
+{
+  'name':'srting', 
+    'lang':'string',
+    'date-of-joining': 'number'  
+},
+{
+  'name':'srting', 
+    'lang':'string',
+    'date-of-joining': 'number'   
+}])
+
+db.<collection-name>.find()                                   # finds all the rows we have inserted so far
+
+db.<collection-name>.find().pretty()                          # shows the rows in BSON format
+
+db.<collection-name>.find({'search-obj':'query})              # for search in Database
+
+
+db.<collection-name>.find().pretty().limit(<number>)          # to restrict the output of search
+
+db.<collection-name>.find(<with query>/<w/o quer>).limit(<number>)  # another way of restricting output 
+
+db.<collection-name>.find({<query>}).count()                  # gives count of the query we are searching for
+
+db.<collection-name>.find().sort({param:1}).pretty()          # sorts the output in ascending order according to par set.
+
+db.<collection-name>.find().sort({param:-1}).pretty()         # sorts the o/p in descending order acc to the par set.
+
+db.<collection-name>.findOne({field:'value'})                 # finds the first matching of the query
+
+db.<collection-name>.findMany({field:'value'})                # finds the many values matching the query
+
+db.<collection-name>.update({field:'value',                   # updating particular object
+{
+    new-field 1:'val1',
+    .
+    .
+}})
+
+db.<collection-name>.update({field:'value',                  # upsert is used for creating an obj if no match found while updation.
+{
+    new-field 1:'val1',                                             # Upsert= Update + Insert
+    .
+    .
+},{upsert:true}})
+
+db.<collection-name>.remove({field:'value})                 # removes the rows matching the parameter 
